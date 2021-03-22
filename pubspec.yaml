@@ -1,0 +1,48 @@
+name: mobile
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/promote_one.png
+    - assets/images/promote_two.png
+    - assets/images/promote_three.png
+    - assets/images/week_one.png
+    - assets/images/week_two.png
+    - assets/images/week_three.png
+    - assets/images/back_tab.png
+    - assets/images/back_sneaker_options.png
+    - assets/images/sneaker_options_one.png
+    - assets/images/sneaker_options_two.png
+    - assets/images/sneaker_options_three.png
+    - assets/images/sneaker_options_four.png
+    - assets/images/sneaker/sneaker_one.png
+    - assets/images/sneaker/sneaker_two.png
+    - assets/images/sneaker/sneaker_three.png
+    - assets/images/sneaker/sneaker_four.png
+    
+  fonts:
+    - family: Heebo
+      fonts:
+        - asset: assets/fonts/Heebo-Bold.ttf
+        - asset: assets/fonts/Heebo-Medium.ttf
+        - asset: assets/fonts/Heebo-Regular.ttf
+        - asset: assets/fonts/Heebo-SemiBold.ttf
+          weight: 700
