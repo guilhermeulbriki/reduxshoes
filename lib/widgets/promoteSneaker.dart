@@ -3,10 +3,10 @@ import 'package:mobile/models/Sneaker.dart';
 
 import 'modalSneakerOptions.dart';
 
-Widget promoteSneaker(image, title, value, context) {
+Widget promoteSneaker(Sneaker sneaker, context) {
   return GestureDetector(
     onTap: () {
-      showModalSneakerOptions(context, demoSneakers[0]);
+      showModalSneakerOptions(context, sneaker);
     },
     child: Container(
       width: 209,
@@ -23,9 +23,6 @@ Widget promoteSneaker(image, title, value, context) {
           ],
         ),
         borderRadius: BorderRadius.circular(16),
-        image: DecorationImage(
-          image: AssetImage(image),
-        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +32,7 @@ Widget promoteSneaker(image, title, value, context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Text>[
               Text(
-                title,
+                sneaker.title,
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Heebo',
@@ -45,7 +42,7 @@ Widget promoteSneaker(image, title, value, context) {
                 ),
               ),
               Text(
-                '\$ ' + value,
+                '\$ ' + sneaker.price,
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Heebo',
@@ -55,6 +52,16 @@ Widget promoteSneaker(image, title, value, context) {
                 ),
               ),
             ],
+          ),
+          Transform.scale(
+            scale: 1.7,
+            child: Transform.translate(
+              offset: Offset(15, -5),
+              child: Transform.rotate(
+                angle: 6.0,
+                child: Image.asset(sneaker.thumbnail),
+              ),
+            ),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,

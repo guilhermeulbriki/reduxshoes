@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/Sneaker.dart';
 
 import 'package:mobile/widgets/promoteSneaker.dart';
 import 'package:mobile/widgets/weekSneaker.dart';
@@ -6,6 +7,12 @@ import 'package:mobile/widgets/weekSneaker.dart';
 import '../navBar.dart';
 
 class HomePage extends StatelessWidget {
+  final List<Sneaker> weekDemoSneakers =
+      demoSneakers.where((sneaker) => !sneaker.isPromoted).toList();
+
+  final List<Sneaker> promoteDemoSneakers =
+      demoSneakers.where((sneaker) => sneaker.isPromoted).toList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +68,11 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.only(left: 36),
                       children: [
-                        promoteSneaker('assets/images/promote_one.png',
-                            'Nike Air Max 720', '190.00', context),
-                        promoteSneaker('assets/images/promote_two.png',
-                            'Nike Air Max Aquaman', '240.00', context),
-                        promoteSneaker('assets/images/promote_three.png',
-                            'Nike caminhada matinal', '120.00', context),
+                        ...List.generate(
+                          promoteDemoSneakers.length,
+                          (index) => promoteSneaker(
+                              promoteDemoSneakers[index], context),
+                        ),
                       ],
                     ),
                   ),
@@ -97,12 +103,11 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.only(left: 36),
                       children: [
-                        weekSneaker('assets/images/week_one.png',
-                            'Nike Flywire Force 1', '340.00', true, context),
-                        weekSneaker('assets/images/week_two.png',
-                            'Nike caminhada', '230.00', false, context),
-                        weekSneaker('assets/images/week_three.png',
-                            'Nike homem aranha', '370.00', false, context),
+                        ...List.generate(
+                          weekDemoSneakers.length,
+                          (index) =>
+                              weekSneaker(weekDemoSneakers[index], context),
+                        ),
                       ],
                     ),
                   ),

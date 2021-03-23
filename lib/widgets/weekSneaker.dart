@@ -3,10 +3,10 @@ import 'package:mobile/models/Sneaker.dart';
 
 import 'modalSneakerOptions.dart';
 
-Widget weekSneaker(image, title, value, isEnded, context) {
+Widget weekSneaker(Sneaker sneaker, context) {
   return GestureDetector(
     onTap: () {
-      showModalSneakerOptions(context, demoSneakers[0]);
+      showModalSneakerOptions(context, sneaker);
     },
     child: Container(
       width: 133,
@@ -17,7 +17,7 @@ Widget weekSneaker(image, title, value, isEnded, context) {
         borderRadius: BorderRadiusDirectional.circular(16),
         color: Color.fromRGBO(48, 48, 65, 1),
         image: DecorationImage(
-          image: AssetImage(image),
+          image: AssetImage(sneaker.thumbnail),
           alignment: Alignment(0, -0.8),
         ),
       ),
@@ -27,7 +27,7 @@ Widget weekSneaker(image, title, value, isEnded, context) {
             alignment: Alignment.topLeft,
             child: Icon(
               Icons.remove_shopping_cart_outlined,
-              color: isEnded
+              color: sneaker.isEnded
                   ? Color.fromRGBO(225, 55, 86, 1)
                   : Color.fromRGBO(225, 55, 86, 0),
               size: 16,
@@ -39,7 +39,7 @@ Widget weekSneaker(image, title, value, isEnded, context) {
             child: Column(
               children: <Text>[
                 Text(
-                  title,
+                  sneaker.title,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -48,7 +48,7 @@ Widget weekSneaker(image, title, value, isEnded, context) {
                   ),
                 ),
                 Text(
-                  '\$ ' + value,
+                  '\$ ' + sneaker.price,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
